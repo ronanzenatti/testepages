@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O Abismo Luminoso — Expedição às Profundezas Bioluminescentes</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Tipografia Editorial Poética + Geométrica Técnica -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Cinzel"', 'serif'],
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            bio: {
+              cyan: '#00f5d4',
+              blue: '#00bbf9',
+              violet: '#9b5de5',
+              abyss: '#010308',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --bio-cyan: #00f5d4;
+      --bio-blue: #00bbf9;
+      --bio-violet: #9b5de5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #031b31;
+      color: #e2f1f8;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      transition: background-color 0.25s linear;
+    }
+
+    /* Glassmorphism Abissal */
+    .abyss-glass {
+      background: rgba(3, 14, 28, 0.56);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 245, 212, 0.16);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    }
+
+    .abyss-glass:hover {
+      border-color: rgba(0, 245, 212, 0.36);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.78), 0 0 28px rgba(0, 245, 212, 0.08);
+    }
+
+    /* Brilho de Texto Bioluminescente */
+    .text-glow-cyan {
+      text-shadow: 0 0 24px rgba(0, 245, 212, 0.45), 0 0 60px rgba(0, 187, 249, 0.25);
+    }
+
+    .text-glow-violet {
+      text-shadow: 0 0 20px rgba(155, 93, 229, 0.5);
+    }
+
+    /* Botões Interativos Bioluminescentes */
+    .bio-btn {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .bio-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0, 245, 212, 0.25) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .bio-btn:hover::before {
+      opacity: 1;
+    }
+
+    .bio-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Estilização Customizada de Sliders do Laboratório */
+    input[type="range"].bio-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"].bio-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--thumb-color, #00f5d4);
+      box-shadow: 0 0 14px var(--thumb-color, #00f5d4), 0 0 4px #ffffff;
+      border: 2px solid #ffffff;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    input[type="range"].bio-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.18);
+    }
+
+    input[type="range"].bio-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--thumb-color, #00f5d4);
+      box-shadow: 0 0 14px var(--thumb-color, #00f5d4);
+      border: 2px solid #ffffff;
+      cursor: pointer;
+    }
+
+    /* Animações Orgânicas dos SVGs das Criaturas */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(1.5deg); }
+    }
+
+    @keyframes pulseBell {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.045, 0.96); }
+    }
+
+    @keyframes spinPinwheel {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes swayTendril {
+      0%, 100% { transform: skewX(-3deg) translateY(0px); }
+      50% { transform: skewX(4deg) translateY(4px); }
+    }
+
+    @keyframes escaGlow {
+      0%, 100% { opacity: 0.75; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.22); }
+    }
+
+    @keyframes siphonWave {
+      0%, 100% { transform: translateX(0px) translateY(0px); }
+      33% { transform: translateX(6px) translateY(-5px); }
+      66% { transform: translateX(-5px) translateY(5px); }
+    }
+
+    .anim-float {
+      animation: floatSlow 6s ease-in-out infinite;
+    }
+
+    .anim-bell {
+      transform-origin: center;
+      animation: pulseBell 3.8s ease-in-out infinite;
+    }
+
+    .atolla-alarm-active .atolla-ring {
+      transform-origin: 200px 200px;
+      animation: spinPinwheel 1.4s linear infinite;
+    }
+
+    .anim-esca {
+      transform-origin: center;
+      animation: escaGlow 2.4s ease-in-out infinite;
+    }
+
+    .esca-supercharged .anim-esca {
+      animation: escaGlow 0.55s ease-in-out infinite;
+    }
+
+    .anim-siphon {
+      animation: siphonWave 5.5s ease-in-out infinite;
+    }
+
+    /* Barra de Rolagem Discreta */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #01040a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 245, 212, 0.3);
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 245, 212, 0.6);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-bio-cyan/30 selection:text-white">
+
+  <!-- ===================================================================== -->
+  <!-- CANVAS INTERATIVO EM TELA CHEIA (PLÂNCTON, NEVE MARINHA & SONAR)      -->
+  <!-- ===================================================================== -->
+  <canvas id="abyssCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <!-- Vinheta Atmosférica Sutil nas Bordas -->
+  <div class="fixed inset-0 pointer-events-none z-0" style="background: radial-gradient(circle at 50% 45%, transparent 45%, rgba(0, 2, 8, 0.72) 100%);"></div>
+
+  <!-- ===================================================================== -->
+  <!-- NOTIFICAÇÃO / TELEMETRIA FLUTUANTE (Substitui qualquer alert)         -->
+  <!-- ===================================================================== -->
+  <div id="telemetryToast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-500 transform -translate-y-3">
+    <div class="abyss-glass px-5 py-2.5 rounded-full flex items-center gap-3 border border-bio-cyan/40">
+      <span id="toastDot" class="w-2.5 h-2.5 rounded-full bg-bio-cyan animate-ping"></span>
+      <span id="toastText" class="text-xs sm:text-sm font-medium tracking-wide text-cyan-100">Pulso bioluminescente emitido</span>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MEDIDOR DE PROFUNDIDADE FIXO (BATÍMETRO)                              -->
+  <!-- ===================================================================== -->
+  <!-- Versão Desktop Lateral Direita -->
+  <aside id="bathymeterDesktop" aria-label="Medidor de Profundidade" class="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col items-end gap-3">
+    <div class="abyss-glass rounded-2xl p-4 w-52 border border-bio-cyan/25">
+      <div class="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-cyan-300/70 mb-1">
+        <span>Batímetro</span>
+        <span class="inline-block w-2 h-2 rounded-full bg-bio-cyan animate-pulse"></span>
+      </div>
+      <div class="flex items-baseline gap-1">
+        <span id="depthValueDesktop" class="font-display text-3xl font-bold text-white tracking-tight">200</span>
+        <span class="text-xs font-semibold text-bio-cyan">metros</span>
+      </div>
+      <div id="zoneNameDesktop" class="text-xs font-medium text-bio-blue mt-0.5">Zona Crepuscular</div>
+
+      <!-- Barra Vertical de Progresso do Mergulho -->
+      <div class="relative my-4 h-44 w-full flex items-center justify-between">
+        <!-- Marcadores Clicáveis -->
+        <div class="flex flex-col justify-between h-full text-[11px] text-slate-400 font-mono">
+          <button onclick="scrollToDepth('hero')" class="text-left hover:text-bio-cyan transition-colors cursor-pointer">200m · Superfície</button>
+          <button onclick="scrollToDepth('creature-atolla')" class="text-left hover:text-bio-cyan transition-colors cursor-pointer">450m · Atolla</button>
+          <button onclick="scrollToDepth('creature-vampire')" class="text-left hover:text-bio-cyan transition-colors cursor-pointer">1.200m · Vampiro</button>
+          <button onclick="scrollToDepth('creature-angler')" class="text-left hover:text-bio-cyan transition-colors cursor-pointer">2.500m · Tamboril</button>
+          <button onclick="scrollToDepth('creature-siphon')" class="text-left hover:text-bio-cyan transition-colors cursor-pointer">4.800m · Sifonóforo</button>
+          <button onclick="scrollToDepth('biolab')" class="text-left hover:text-bio-cyan transition-colors cursor-pointer">6.000m · Hadal</button>
+        </div>
+
+        <!-- Trilho da Régua -->
+        <div class="relative w-2 h-full rounded-full bg-white/10 overflow-hidden">
+          <div id="depthBarDesktop" class="w-full bg-gradient-to-b from-bio-cyan via-bio-blue to-bio-violet rounded-full transition-all duration-150" style="height: 4%;"></div>
+        </div>
+      </div>
+
+      <!-- Telemetria Ambiental -->
+      <div class="grid grid-cols-2 gap-2 pt-2 border-t border-white/10 text-[11px]">
+        <div>
+          <span class="block text-slate-400 text-[10px]">Pressão</span>
+          <span id="pressureDesktop" class="font-mono text-cyan-200 font-semibold">21 ATM</span>
+        </div>
+        <div class="text-right">
+          <span class="block text-slate-400 text-[10px]">Temp. Água</span>
+          <span id="tempDesktop" class="font-mono text-cyan-200 font-semibold">11.4 °C</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Versão Mobile / Tablet Compacta no Topo Direito -->
+  <div id="bathymeterMobile" class="lg:hidden fixed top-3 right-3 z-40">
+    <div class="abyss-glass rounded-full px-3.5 py-1.5 flex items-center gap-2.5 border border-bio-cyan/30">
+      <span class="w-2 h-2 rounded-full bg-bio-cyan animate-pulse"></span>
+      <span id="depthValueMobile" class="font-mono text-xs font-bold text-white">200m</span>
+      <span class="text-white/25">|</span>
+      <span id="zoneNameMobile" class="text-[11px] text-bio-cyan font-medium">Crepuscular</span>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- CONTEÚDO PRINCIPAL DA EXPEDIÇÃO                                       -->
+  <!-- ===================================================================== -->
+  <main class="relative z-10">
+
+    <!-- ------------------------------------------------------------------- -->
+    <!-- 1. HERO SECTION IMERSIVA                                            -->
+    <!-- ------------------------------------------------------------------- -->
+    <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center px-5 sm:px-8 pt-16 pb-20 relative">
+      <div class="max-w-4xl mx-auto">
+        <!-- Badge de Expedição -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full abyss-glass text-xs uppercase tracking-[0.25em] text-bio-cyan mb-8">
+          <span class="w-1.5 h-1.5 rounded-full bg-bio-cyan"></span>
+          <span>Expedição Batipelágica · 200m — 6.000m</span>
+        </div>
+
+        <!-- Título Majestoso -->
+        <h1 class="font-display text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-white leading-[1.12] text-glow-cyan mb-6">
+          O Abismo Luminoso
+        </h1>
+
+        <!-- Subtítulo Poético -->
+        <p class="font-serif italic text-xl sm:text-2xl md:text-3xl text-cyan-100/90 max-w-2xl mx-auto leading-relaxed mb-5">
+          “Onde a última flecha do sol se desfaz em silêncio, a própria vida aprende a forjar constelações.”
+        </p>
+
+        <p class="text-sm sm:text-base text-slate-300/85 max-w-xl mx-auto leading-relaxed mb-10">
+          Deslize o cursor ou toque na água escura para despertar dinoflagelados microscópicos. Role para mergulhar pelas zonas abissais do oceano profundo.
+        </p>
+
+        <!-- Botões Principais da Hero -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#creature-atolla" class="bio-btn w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-bio-cyan/20 via-bio-blue/20 to-bio-violet/20 border border-bio-cyan/60 text-white font-semibold tracking-wide flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(0,245,212,0.2)] hover:shadow-[0_0_40px_rgba(0,245,212,0.4)]">
+            <span>Iniciar Mergulho</span>
+            <svg class="w-4 h-4 text-bio-cyan animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
+
+          <button id="audioToggleBtn" type="button" class="bio-btn w-full sm:w-auto px-7 py-4 rounded-full abyss-glass border border-white/20 hover:border-bio-blue/60 text-cyan-100 font-medium tracking-wide flex items-center justify-center gap-3 cursor-pointer">
+            <span id="audioIcon" class="relative flex h-3 w-3">
+              <span id="audioPing" class="hidden animate-ping absolute inline-flex h-full w-full rounded-full bg-bio-cyan opacity-75"></span>
+              <span id="audioDot" class="relative inline-flex rounded-full h-3 w-3 bg-slate-400"></span>
+            </span>
+            <span id="audioBtnLabel">Áudio Ambiente (Sonar &amp; Profundezas)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Indicador Visual de Profundidade Inicial -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-cyan-200/50 tracking-widest uppercase">
+        <span>200m · Limiar da Zona Crepuscular</span>
+        <div class="w-px h-10 bg-gradient-to-b from-bio-cyan/60 to-transparent"></div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------- -->
+    <!-- 2. GALERIA INTERATIVA DE CRIATURAS ABISSAIS (4 ZONAS)               -->
+    <!-- ------------------------------------------------------------------- -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 lg:pr-64 space-y-28 sm:space-y-36 py-12">
+
+      <!-- ================================================================= -->
+      <!-- CRIATURA 1: 450m - ÁGUA-VIVA ATOLLA (Alarme Bioluminescente)        -->
+      <!-- ================================================================= -->
+      <section id="creature-atolla" data-depth="450" class="scroll-mt-24">
+        <div class="abyss-glass rounded-3xl p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+          <!-- Marcador de Zona -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-6 mb-8 border-b border-white/10">
+            <div class="flex items-center gap-3">
+              <span class="px-3.5 py-1 rounded-full bg-bio-cyan/15 border border-bio-cyan/40 text-bio-cyan font-mono text-xs sm:text-sm font-bold">
+                -450 METROS
+              </span>
+              <span class="text-xs sm:text-sm uppercase tracking-[0.2em] text-cyan-200/75">
+                Zona Crepuscular (Mesopelágica)
+              </span>
+            </div>
+            <span class="text-xs font-mono text-slate-400">46 ATM · 7.8 °C</span>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            <!-- Ilustração SVG Animada da Água-viva Atolla -->
+            <div class="lg:col-span-5 flex flex-col items-center justify-center">
+              <div id="atollaVisualWrapper" class="relative w-full max-w-[320px] aspect-square flex items-center justify-center rounded-3xl bg-radial from-cyan-950/30 to-transparent p-4">
+                <svg id="atollaSvg" viewBox="0 0 400 400" class="w-full h-full anim-float overflow-visible" aria-label="Ilustração vetorial da Água-viva Atolla">
+                  <defs>
+                    <radialGradient id="atollaCoreGrad" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#9b5de5" stop-opacity="0.95" />
+                      <stop offset="45%" stop-color="#4a0e4e" stop-opacity="0.85" />
+                      <stop offset="78%" stop-color="#00bbf9" stop-opacity="0.55" />
+                      <stop offset="100%" stop-color="#00f5d4" stop-opacity="0" />
+                    </radialGradient>
+                    <filter id="atollaGlow" x="-30%" y="-30%" width="160%" height="160%">
+                      <feGaussianBlur stdDeviation="6" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+
+                  <!-- Halo Externo -->
+                  <circle cx="200" cy="200" r="145" fill="url(#atollaCoreGrad)" opacity="0.5" />
+
+                  <!-- Tentáculos Marginais Radiais (22 tentáculos delicados) -->
+                  <g stroke="#00bbf9" stroke-width="1.6" stroke-linecap="round" opacity="0.7" fill="none">
+                    <path d="M200 72 Q196 35 204 12" />
+                    <path d="M236 77 Q246 40 262 18" />
+                    <path d="M269 92 Q292 60 315 44" />
+                    <path d="M296 116 Q330 92 358 84" />
+                    <path d="M316 147 Q354 134 385 136" />
+                    <path d="M326 182 Q366 180 394 190" />
+                    <path d="M326 218 Q366 226 390 244" />
+                    <path d="M316 253 Q352 272 372 296" />
+                    <path d="M296 284 Q324 314 336 344" />
+                    <path d="M269 308 Q286 344 290 376" />
+                    <path d="M164 77 Q154 40 138 18" />
+                    <path d="M131 92 Q108 60 85 44" />
+                    <path d="M104 116 Q70 92 42 84" />
+                    <path d="M84 147 Q46 134 15 136" />
+                    <path d="M74 182 Q34 180 6 190" />
+                    <path d="M74 218 Q34 226 10 244" />
+                    <path d="M84 253 Q48 272 28 296" />
+                    <path d="M104 284 Q76 314 64 344" />
+                    <path d="M131 308 Q114 344 110 376" />
+                  </g>
+
+                  <!-- Tentáculo Hipertrófico Longo (Característico da Atolla) -->
+                  <path d="M200 328 C212 355, 182 375, 210 398" stroke="#00f5d4" stroke-width="3" fill="none" stroke-linecap="round" filter="url(#atollaGlow)" />
+
+                  <!-- Sino Coronário Principal -->
+                  <g class="anim-bell">
+                    <circle cx="200" cy="200" r="122" fill="rgba(18, 9, 41, 0.85)" stroke="#00f5d4" stroke-width="2" />
+                    <!-- Sulco Coronal -->
+                    <circle cx="200" cy="200" r="92" fill="none" stroke="#9b5de5" stroke-width="2.5" stroke-dasharray="10 6" />
+                    <!-- Anel de Alarme Bioluminescente (Gira quando ativado) -->
+                    <g class="atolla-ring" filter="url(#atollaGlow)">
+                      <circle cx="200" cy="200" r="106" fill="none" stroke="#00f5d4" stroke-width="5" stroke-dasharray="18 24" />
+                      <circle cx="200" cy="200" r="76" fill="none" stroke="#00bbf9" stroke-width="3.5" stroke-dasharray="12 20" />
+                    </g>
+                    <!-- Órgãos Internos / Gônadas em Cruz -->
+                    <g fill="#c77dff" opacity="0.85">
+                      <ellipse cx="200" cy="162" rx="14" ry="22" />
+                      <ellipse cx="200" cy="238" rx="14" ry="22" />
+                      <ellipse cx="162" cy="200" rx="22" ry="14" />
+                      <ellipse cx="238" cy="200" rx="22" ry="14" />
+                    </g>
+                    <circle cx="200" cy="200" r="24" fill="#00f5d4" opacity="0.35" filter="url(#atollaGlow)" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Narrativa Poética e Ficha Técnica -->
+            <div class="lg:col-span-7 space-y-6">
+              <div>
+                <p class="font-serif italic text-lg text-bio-cyan mb-1">Atolla wyvillei · O Farol de Socorro</p>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white tracking-wide">
+                  Água-viva Atolla
+                </h2>
+              </div>
+
+              <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                Quando capturada nas mandíbulas de um predador nas trevas da zona crepuscular, a <em>Atolla wyvillei</em> não foge em silêncio: ela acende uma roda giratória de luz azul-ciano hipnótica que percorre sua coroa como uma sirene cósmica submersa.
+              </p>
+
+              <!-- Ficha Técnica -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Profundidade</span>
+                  <span class="font-semibold text-sm text-white mt-0.5 block">300m – 1.000m</span>
+                </div>
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Comprimento</span>
+                  <span class="font-semibold text-sm text-white mt-0.5 block">Até 20 cm (sino)</span>
+                </div>
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Espectro de Luz</span>
+                  <span class="font-semibold text-sm text-bio-cyan mt-0.5 block">475 nm (Ciano)</span>
+                </div>
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Função Evolutiva</span>
+                  <span class="font-semibold text-sm text-white mt-0.5 block">Alarme de Predador</span>
+                </div>
+              </div>
+
+              <!-- Curiosidade Científica -->
+              <div class="rounded-2xl bg-bio-cyan/[0.06] border-l-2 border-bio-cyan p-4 text-xs sm:text-sm text-cyan-100/90 leading-relaxed">
+                <strong class="text-bio-cyan font-semibold">Teoria do “Alarme Contra Roubo”:</strong> Seu pulso luminoso pode ser visto a mais de 100 metros de distância. O objetivo não é assustar o atacante, mas atrair um predador ainda maior para devorar quem a está atacando — permitindo que a Atolla escape na confusão.
+              </div>
+
+              <!-- Botão Interativo -->
+              <div class="pt-2">
+                <button id="btnAtollaAlarm" type="button" class="bio-btn px-6 py-3.5 rounded-full bg-bio-cyan/15 hover:bg-bio-cyan/25 border border-bio-cyan/60 text-bio-cyan font-semibold text-sm tracking-wide flex items-center gap-3 cursor-pointer">
+                  <span class="w-2.5 h-2.5 rounded-full bg-bio-cyan animate-ping"></span>
+                  <span>Ativar Pulso de Alarme</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- CRIATURA 2: 1.200m - LULA-VAMPIRO-DO-INFERNO                      -->
+      <!-- ================================================================= -->
+      <section id="creature-vampire" data-depth="1200" class="scroll-mt-24">
+        <div class="abyss-glass rounded-3xl p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+          <!-- Marcador de Zona -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-6 mb-8 border-b border-white/10">
+            <div class="flex items-center gap-3">
+              <span class="px-3.5 py-1 rounded-full bg-bio-violet/20 border border-bio-violet/50 text-purple-300 font-mono text-xs sm:text-sm font-bold">
+                -1.200 METROS
+              </span>
+              <span class="text-xs sm:text-sm uppercase tracking-[0.2em] text-purple-200/75">
+                Zona Batipelágica (Meia-Noite)
+              </span>
+            </div>
+            <span class="text-xs font-mono text-slate-400">121 ATM · 3.9 °C</span>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            <!-- Narrativa (Alternando ordem no desktop para dinamismo visual) -->
+            <div class="lg:col-span-7 order-2 lg:order-1 space-y-6">
+              <div>
+                <p class="font-serif italic text-lg text-purple-300 mb-1">Vampyroteuthis infernalis · Relíquia Jurássica</p>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white tracking-wide">
+                  Lula-vampiro-do-inferno
+                </h2>
+              </div>
+
+              <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                Apesar do nome dramático, este cefalópode ancestral é um detritívoro pacífico que flutua na zona de mínimo oxigênio. Sem glândula de tinta preta — inútil na escuridão absoluta —, ela expele uma tempestade de estrelas líquidas bioluminescentes para desorientar predadores.
+              </p>
+
+              <!-- Ficha Técnica -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Profundidade</span>
+                  <span class="font-semibold text-sm text-white mt-0.5 block">600m – 1.500m</span>
+                </div>
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Comprimento</span>
+                  <span class="font-semibold text-sm text-white mt-0.5 block">Até 30 cm</span>
+                </div>
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Espectro de Luz</span>
+                  <span class="font-semibold text-sm text-purple-300 mt-0.5 block">465 nm (Azul-Safira)</span>
+                </div>
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Função Evolutiva</span>
+                  <span class="font-semibold text-sm text-white mt-0.5 block">Cortina de Luz</span>
+                </div>
+              </div>
+
+              <!-- Curiosidade Científica -->
+              <div class="rounded-2xl bg-bio-violet/10 border-l-2 border-bio-violet p-4 text-xs sm:text-sm text-purple-100/90 leading-relaxed">
+                <strong class="text-purple-300 font-semibold">Nuvem de Muco Estrelado:</strong> As pontas de seus oito braços liberam uma matriz gelatinosa repleta de esferas luminosas que brilham por até 10 minutos, criando um chamariz flutuante enquanto a lula recua silenciosamente nas sombras.
+              </div>
+
+              <!-- Botão Interativo -->
+              <div class="pt-2">
+                <button id="btnVampireCloud" type="button" class="bio-btn px-6 py-3.5 rounded-full bg-bio-violet/20 hover:bg-bio-violet/30 border border-bio-violet/70 text-purple-200 font-semibold text-sm tracking-wide flex items-center gap-3 cursor-pointer">
+                  <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
+                  <span>Liberar Nuvem de Muco Luminoso</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Ilustração SVG Animada da Lula-vampiro -->
+            <div class="lg:col-span-5 order-1 lg:order-2 flex flex-col items-center justify-center">
+              <div class="relative w-full max-w-[320px] aspect-square flex items-center justify-center p-4">
+                <svg id="vampireSvg" viewBox="0 0 400 400" class="w-full h-full anim-float overflow-visible" aria-label="Ilustração vetorial da Lula-vampiro-do-inferno">
+                  <defs>
+                    <linearGradient id="vampireMantle" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#5a189a" />
+                      <stop offset="55%" stop-color="#240046" />
+                      <stop offset="100%" stop-color="#10002b" />
+                    </linearGradient>
+                    <filter id="vampireGlow" x="-30%" y="-30%" width="160%" height="160%">
+                      <feGaussianBlur stdDeviation="5" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+
+                  <!-- Barbatanas Laterais (Orelhas) -->
+                  <path d="M150 95 C105 75, 95 120, 145 130 Z" fill="#3c096c" stroke="#9b5de5" stroke-width="1.5" />
+                  <path d="M250 95 C295 75, 305 120, 255 130 Z" fill="#3c096c" stroke="#9b5de5" stroke-width="1.5" />
+
+                  <!-- Manto Superior -->
+                  <path d="M145 145 C145 55, 255 55, 255 145 L275 215 L125 215 Z" fill="url(#vampireMantle)" stroke="#9b5de5" stroke-width="2" />
+
+                  <!-- Órgãos Fotóforos no Manto -->
+                  <circle cx="170" cy="110" r="3" fill="#00f5d4" filter="url(#vampireGlow)" />
+                  <circle cx="230" cy="110" r="3" fill="#00f5d4" filter="url(#vampireGlow)" />
+
+                  <!-- Capa Interbraquial (Webbed Cloak) -->
+                  <path d="M125 205 Q95 275 110 340 Q145 315 160 345 Q185 315 200 355 Q215 315 240 345 Q255 315 290 340 Q305 275 275 205 Z" fill="#180230" stroke="#7b2cbf" stroke-width="2" />
+
+                  <!-- Nervuras Luminosas dos Braços e Pontas Fotóforas -->
+                  <g stroke="#9b5de5" stroke-width="2" fill="none">
+                    <path d="M135 210 Q112 275 110 340" />
+                    <path d="M162 212 Q155 280 160 345" />
+                    <path d="M200 214 L200 355" />
+                    <path d="M238 212 Q245 280 240 345" />
+                    <path d="M265 210 Q288 275 290 340" />
+                  </g>
+
+                  <!-- Fotóforos Brilhantes nas Pontas dos Tentáculos -->
+                  <g filter="url(#vampireGlow)" fill="#00f5d4">
+                    <circle cx="110" cy="340" r="5" />
+                    <circle cx="160" cy="345" r="5" />
+                    <circle cx="200" cy="355" r="6" />
+                    <circle cx="240" cy="345" r="5" />
+                    <circle cx="290" cy="340" r="5" />
+                  </g>
+
+                  <!-- Olhos Azuis Proporcionalmente Gigantes (Maiores do Reino Animal em proporção) -->
+                  <g filter="url(#vampireGlow)">
+                    <circle cx="165" cy="178" r="18" fill="#00bbf9" opacity="0.3" />
+                    <circle cx="165" cy="178" r="12" fill="#00f5d4" />
+                    <circle cx="165" cy="178" r="6" fill="#03071e" />
+                    <circle cx="161" cy="174" r="2.5" fill="#ffffff" />
+
+                    <circle cx="235" cy="178" r="18" fill="#00bbf9" opacity="0.3" />
+                    <circle cx="235" cy="178" r="12" fill="#00f5d4" />
+                    <circle cx="235" cy="178" r="6" fill="#03071e" />
+                    <circle cx="231" cy="174" r="2.5" fill="#ffffff" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- CRIATURA 3: 2.500m - PEIXE-DIABO-NEGRO / TAMBORIL                 -->
+      <!-- ================================================================= -->
+      <section id="creature-angler" data-depth="2500" class="scroll-mt-24">
+        <div class="abyss-glass rounded-3xl p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+          <!-- Marcador de Zona -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-6 mb-8 border-b border-white/10">
+            <div class="flex items-center gap-3">
+              <span class="px-3.5 py-1 rounded-full bg-bio-blue/20 border border-bio-blue/50 text-sky-300 font-mono text-xs sm:text-sm font-bold">
+                -2.500 METROS
+              </span>
+              <span class="text-xs sm:text-sm uppercase tracking-[0.2em] text-sky-200/75">
+                Zona Abissal Superior
+              </span>
+            </div>
+            <span class="text-xs font-mono text-slate-400">251 ATM · 2.1 °C</span>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            <!-- Ilustração SVG Animada do Tamboril Abissal -->
+            <div class="lg:col-span-5 flex flex-col items-center justify-center">
+              <div id="anglerVisualWrapper" class="relative w-full max-w-[330px] aspect-square flex items-center justify-center p-4">
+                <svg id="anglerSvg" viewBox="0 0 400 400" class="w-full h-full anim-float overflow-visible" aria-label="Ilustração vetorial do Peixe-diabo-negro">
+                  <defs>
+                    <radialGradient id="escaLightGrad" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+                      <stop offset="28%" stop-color="#00f5d4" stop-opacity="0.9" />
+                      <stop offset="65%" stop-color="#00bbf9" stop-opacity="0.35" />
+                      <stop offset="100%" stop-color="#00bbf9" stop-opacity="0" />
+                    </radialGradient>
+                    <linearGradient id="anglerBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#1b263b" />
+                      <stop offset="50%" stop-color="#0d1321" />
+                      <stop offset="100%" stop-color="#05080f" />
+                    </linearGradient>
+                    <filter id="escaFilter" x="-60%" y="-60%" width="220%" height="220%">
+                      <feGaussianBlur stdDeviation="8" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+
+                  <!-- Cauda e Nadadeiras Translúcidas -->
+                  <path d="M315 215 L378 175 Q365 215 378 255 Z" fill="rgba(0, 187, 249, 0.16)" stroke="#00bbf9" stroke-width="1.5" />
+                  <path d="M245 148 Q275 110 295 145 Z" fill="rgba(0, 187, 249, 0.14)" stroke="#00bbf9" stroke-width="1.2" />
+                  <path d="M245 275 Q275 312 295 278 Z" fill="rgba(0, 187, 249, 0.14)" stroke="#00bbf9" stroke-width="1.2" />
+
+                  <!-- Corpo Globular do Peixe-diabo-negro -->
+                  <path d="M90 190 C115 115, 245 115, 320 205 L320 225 C255 305, 130 305, 85 255 C110 245, 145 235, 165 218 C135 208, 105 200, 90 190 Z" fill="url(#anglerBodyGrad)" stroke="#334155" stroke-width="2" />
+
+                  <!-- Mandíbula Inferior Projetada -->
+                  <path d="M85 255 Q125 292 185 275" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+
+                  <!-- Dentes Translúcidos Afiados -->
+                  <g fill="#e0fbfc" opacity="0.9">
+                    <!-- Dentes Superiores -->
+                    <polygon points="98,193 103,214 108,195" />
+                    <polygon points="116,198 120,222 125,200" />
+                    <polygon points="134,204 137,225 142,206" />
+                    <polygon points="150,210 153,226 157,212" />
+                    <!-- Dentes Inferiores -->
+                    <polygon points="94,252 101,228 106,249" />
+                    <polygon points="113,245 119,218 124,241" />
+                    <polygon points="132,237 137,214 142,233" />
+                    <polygon points="150,229 154,212 158,226" />
+                  </g>
+
+                  <!-- Olho Leitoso Abissal -->
+                  <circle cx="152" cy="172" r="8" fill="#1e293b" stroke="#64748b" stroke-width="1.5" />
+                  <circle cx="150" cy="170" r="3" fill="#94a3b8" />
+
+                  <!-- Ilício (Haste da Vara de Pesca Frontal) -->
+                  <path d="M142 138 C122 72, 68 68, 62 122" fill="none" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+
+                  <!-- Esca (Isca Bioluminescente Simbiótica) -->
+                  <g class="anim-esca" style="transform-origin: 62px 128px;">
+                    <circle cx="62" cy="128" r="46" fill="url(#escaLightGrad)" />
+                    <ellipse cx="62" cy="128" rx="9" ry="12" fill="#00f5d4" filter="url(#escaFilter)" />
+                    <circle cx="62" cy="126" r="4.5" fill="#ffffff" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Narrativa Poética e Ficha Técnica -->
+            <div class="lg:col-span-7 space-y-6">
+              <div>
+                <p class="font-serif italic text-lg text-sky-300 mb-1">Melanocetus johnsonii · A Lanterna do Abismo</p>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white tracking-wide">
+                  Peixe-diabo-negro (Tamboril)
+                </h2>
+              </div>
+
+              <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                Em um deserto líquido onde a energia é escassa, perseguir presas custa caro demais. O tamboril abissal transforma a própria paciência em armadilha: suspenso na imobilidade total, balança uma estrela cativa diante de suas mandíbulas e espera que a curiosidade faça o resto.
+              </p>
+
+              <!-- Ficha Técnica -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Profundidade</span>
+                  <span class="font-semibold text-sm text-white mt-0.5 block">1.000m – 3.000m</span>
+                </div>
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Comprimento</span>
+                  <span class="font-semibold text-sm text-white mt-0.5 block">15 a 20 cm (fêmea)</span>
+                </div>
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Espectro de Luz</span>
+                  <span class="font-semibold text-sm text-sky-300 mt-0.5 block">490 nm (Verde-Ciano)</span>
+                </div>
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Função Evolutiva</span>
+                  <span class="font-semibold text-sm text-white mt-0.5 block">Atração de Presas</span>
+                </div>
+              </div>
+
+              <!-- Curiosidade Científica -->
+              <div class="rounded-2xl bg-bio-blue/10 border-l-2 border-bio-blue p-4 text-xs sm:text-sm text-sky-100/90 leading-relaxed">
+                <strong class="text-sky-300 font-semibold">Simbiose Bacteriana:</strong> O peixe não produz a luz sozinho. Sua isca (<em>esca</em>) abriga milhões de bactérias bioluminescentes do gênero <em>Photobacterium</em>, alimentadas pelo sangue do hospedeiro em troca de brilho contínuo.
+              </div>
+
+              <!-- Botão Interativo -->
+              <div class="pt-2 flex flex-wrap items-center gap-3">
+                <button id="btnAnglerLure" type="button" class="bio-btn px-6 py-3.5 rounded-full bg-bio-blue/20 hover:bg-bio-blue/30 border border-bio-blue/60 text-sky-200 font-semibold text-sm tracking-wide flex items-center gap-3 cursor-pointer">
+                  <span id="anglerDot" class="w-2.5 h-2.5 rounded-full bg-bio-cyan"></span>
+                  <span id="anglerBtnText">Ativar Isca Magnética no Cursor</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- CRIATURA 4: 4.800m - SIFONÓFORO GIGANTE (Praya dubia)             -->
+      <!-- ================================================================= -->
+      <section id="creature-siphon" data-depth="4800" class="scroll-mt-24">
+        <div class="abyss-glass rounded-3xl p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+          <!-- Marcador de Zona -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-6 mb-8 border-b border-white/10">
+            <div class="flex items-center gap-3">
+              <span class="px-3.5 py-1 rounded-full bg-teal-400/15 border border-teal-300/40 text-teal-200 font-mono text-xs sm:text-sm font-bold">
+                -4.800 METROS
+              </span>
+              <span class="text-xs sm:text-sm uppercase tracking-[0.2em] text-teal-200/75">
+                Planície Abissal Profunda
+              </span>
+            </div>
+            <span class="text-xs font-mono text-slate-400">481 ATM · 1.2 °C</span>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            <!-- Narrativa -->
+            <div class="lg:col-span-6 order-2 lg:order-1 space-y-6">
+              <div>
+                <p class="font-serif italic text-lg text-teal-200 mb-1">Praya dubia · A Constelação Errante</p>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white tracking-wide">
+                  Sifonóforo Gigante
+                </h2>
+              </div>
+
+              <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                Não é um único animal, mas uma supercolônia flutuante de milhares de zooides especializados unidos em perfeita harmonia. Mais longo que uma baleia-azul, o <em>Praya dubia</em> desenha espirais de luz azul-esverdeada na planície abissal como uma aurora boreal subaquática.
+              </p>
+
+              <!-- Ficha Técnica -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Profundidade</span>
+                  <span class="font-semibold text-sm text-white mt-0.5 block">700m – 5.000m</span>
+                </div>
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Comprimento</span>
+                  <span class="font-semibold text-sm text-white mt-0.5 block">40 a 50 metros</span>
+                </div>
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Espectro de Luz</span>
+                  <span class="font-semibold text-sm text-teal-300 mt-0.5 block">480 nm (Turquesa)</span>
+                </div>
+                <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5">
+                  <span class="block text-[10px] uppercase tracking-wider text-slate-400">Função Evolutiva</span>
+                  <span class="font-semibold text-sm text-white mt-0.5 block">Cortina de Caça</span>
+                </div>
+              </div>
+
+              <!-- Curiosidade Científica -->
+              <div class="rounded-2xl bg-teal-400/[0.07] border-l-2 border-teal-300 p-4 text-xs sm:text-sm text-teal-100/90 leading-relaxed">
+                <strong class="text-teal-200 font-semibold">Organismo Colonial:</strong> Cada segmento possui uma função vital: sinos natatórios na ponta impulsionam a colônia, enquanto milhares de filamentos urticantes luminosos formam uma teia sedutora que atrai crustáceos e pequenos peixes.
+              </div>
+
+              <div class="pt-2">
+                <button id="btnSiphonWave" type="button" class="bio-btn px-6 py-3.5 rounded-full bg-teal-400/15 hover:bg-teal-400/25 border border-teal-300/60 text-teal-100 font-semibold text-sm tracking-wide flex items-center gap-3 cursor-pointer">
+                  <span class="w-2.5 h-2.5 rounded-full bg-teal-300"></span>
+                  <span>Propagar Onda Bioluminescente</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Ilustração SVG Interativa do Sifonóforo Gigante -->
+            <div class="lg:col-span-6 order-1 lg:order-2 flex flex-col items-center justify-center">
+              <div id="siphonInteractiveBox" class="relative w-full max-w-[400px] aspect-[4/3] flex items-center justify-center p-2 cursor-pointer group" title="Passe o cursor ou toque para iluminar a colônia">
+                <svg id="siphonSvg" viewBox="0 0 460 320" class="w-full h-full anim-siphon overflow-visible" aria-label="Ilustração vetorial do Sifonóforo Gigante Praya dubia">
+                  <defs>
+                    <linearGradient id="siphonStemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#00f5d4" />
+                      <stop offset="50%" stop-color="#00bbf9" />
+                      <stop offset="100%" stop-color="#9b5de5" />
+                    </linearGradient>
+                    <filter id="siphonGlow" x="-40%" y="-40%" width="180%" height="180%">
+                      <feGaussianBlur stdDeviation="5" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+
+                  <!-- Sinos Natatórios Duplos (Nectóforos na Cabeça da Colônia) -->
+                  <g filter="url(#siphonGlow)">
+                    <ellipse cx="68" cy="112" rx="34" ry="22" transform="rotate(-18 68 112)" fill="rgba(0, 245, 212, 0.14)" stroke="#00f5d4" stroke-width="2" />
+                    <ellipse cx="82" cy="138" rx="30" ry="19" transform="rotate(-12 82 138)" fill="rgba(0, 187, 249, 0.14)" stroke="#00bbf9" stroke-width="1.8" />
+                  </g>
+
+                  <!-- Eixo Central Ondulante da Colônia -->
+                  <path id="siphonMainSpine" d="M96 130 C155 75, 195 215, 265 145 C325 85, 365 225, 435 165" fill="none" stroke="url(#siphonStemGrad)" stroke-width="4" stroke-linecap="round" filter="url(#siphonGlow)" />
+
+                  <!-- Filamentos Urticantes Pendentes (Tentilla) -->
+                  <g stroke="#00bbf9" stroke-width="1" opacity="0.55" fill="none">
+                    <path d="M135 112 Q130 165 142 205" />
+                    <path d="M168 134 Q162 195 174 240" />
+                    <path d="M202 162 Q198 225 210 272" />
+                    <path d="M236 164 Q232 225 244 268" />
+                    <path d="M270 140 Q266 205 278 250" />
+                    <path d="M306 126 Q302 185 314 235" />
+                    <path d="M342 152 Q338 215 350 262" />
+                    <path d="M378 182 Q374 240 386 285" />
+                    <path d="M412 178 Q408 232 420 275" />
+                  </g>
+
+                  <!-- Nós Zooides Bioluminescentes (Acendem em cascata ao passar o mouse) -->
+                  <g id="siphonNodes" filter="url(#siphonGlow)">
+                    <circle class="siphon-node transition-all duration-300" cx="115" cy="116" r="5" fill="#00f5d4" />
+                    <circle class="siphon-node transition-all duration-300" cx="145" cy="116" r="6" fill="#00f5d4" />
+                    <circle class="siphon-node transition-all duration-300" cx="176" cy="142" r="5.5" fill="#00bbf9" />
+                    <circle class="siphon-node transition-all duration-300" cx="208" cy="164" r="6.5" fill="#00f5d4" />
+                    <circle class="siphon-node transition-all duration-300" cx="242" cy="160" r="5.5" fill="#00bbf9" />
+                    <circle class="siphon-node transition-all duration-300" cx="276" cy="136" r="6" fill="#00f5d4" />
+                    <circle class="siphon-node transition-all duration-300" cx="312" cy="128" r="5.5" fill="#9b5de5" />
+                    <circle class="siphon-node transition-all duration-300" cx="348" cy="158" r="6.5" fill="#00f5d4" />
+                    <circle class="siphon-node transition-all duration-300" cx="384" cy="184" r="5.5" fill="#00bbf9" />
+                    <circle class="siphon-node transition-all duration-300" cx="420" cy="174" r="5" fill="#9b5de5" />
+                  </g>
+                </svg>
+                <span class="absolute bottom-1 text-[11px] text-teal-200/60 tracking-wider uppercase group-hover:text-teal-200 transition-colors">
+                  Passe o cursor sobre a colônia para excitar os zooides
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 3. LABORATÓRIO DE BIOLUMINESCÊNCIA INTERATIVO (6.000m HADAL)      -->
+      <!-- ================================================================= -->
+      <section id="biolab" data-depth="6000" class="scroll-mt-20 pb-24">
+        <div class="abyss-glass rounded-3xl p-6 sm:p-10 lg:p-12 border border-bio-cyan/35 relative overflow-hidden">
+          <!-- Cabeçalho do Laboratório -->
+          <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-white/10">
+            <div>
+              <div class="flex items-center gap-3 mb-2">
+                <span class="px-3.5 py-1 rounded-full bg-bio-cyan/15 border border-bio-cyan/40 text-bio-cyan font-mono text-xs font-bold">
+                  -6.000 METROS · ZONA HADAL
+                </span>
+                <span class="text-xs uppercase tracking-[0.2em] text-slate-400">Estação Experimental</span>
+              </div>
+              <h2 class="font-display text-3xl sm:text-4xl font-bold text-white tracking-wide">
+                Laboratório de Bioluminescência
+              </h2>
+            </div>
+
+            <!-- Equação Bioquímica -->
+            <div class="rounded-2xl bg-black/40 border border-white/10 px-4 py-3 font-mono text-xs sm:text-sm text-cyan-200">
+              <span class="text-bio-cyan font-semibold">Luciferina</span> + O₂ + ATP
+              <span class="text-slate-400 mx-1">⟶</span>
+              <span class="text-purple-300">[Luciferase]</span>
+              <span class="text-slate-400 mx-1">⟶</span>
+              <span id="photonOutputLabel" class="font-bold text-white">Fóton (480 nm)</span>
+            </div>
+          </div>
+
+          <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed mb-8">
+            Misture <strong class="text-white">Luciferina</strong> (o substrato emissor de luz) e <strong class="text-white">Luciferase</strong> (a enzima catalisadora) ajustando os parâmetros abissais abaixo. Sintetize sua própria onda de luz no oceano ou dispare um pulso de sonar para revelar toda a coluna d'água.
+          </p>
+
+          <!-- Controles Deslizantes do Laboratório -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-9">
+            <!-- Controle 1: Comprimento de Onda (nm) -->
+            <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-5 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <label for="sliderWavelength" class="text-xs uppercase tracking-wider text-slate-300 font-semibold">
+                    Comprimento de Onda
+                  </label>
+                  <span id="valWavelength" class="font-mono text-sm font-bold text-bio-cyan">480 nm</span>
+                </div>
+                <p id="descWavelength" class="text-xs text-slate-400 mb-4">
+                  Ciano Abissal — penetra mais longe na água do mar.
+                </p>
+              </div>
+              <div>
+                <input id="sliderWavelength" type="range" min="420" max="590" value="480" class="bio-slider" />
+                <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-2">
+                  <span>420nm (Violeta)</span>
+                  <span>490nm (Ciano)</span>
+                  <span>590nm (Âmbar)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controle 2: Profundidade / Pressão Hidrostática -->
+            <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-5 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <label for="sliderLabDepth" class="text-xs uppercase tracking-wider text-slate-300 font-semibold">
+                    Profundidade Simulada
+                  </label>
+                  <span id="valLabDepth" class="font-mono text-sm font-bold text-bio-blue">3.500 m</span>
+                </div>
+                <p class="text-xs text-slate-400 mb-4">
+                  Altera a viscosidade e a turbulência das correntes abissais.
+                </p>
+              </div>
+              <div>
+                <input id="sliderLabDepth" type="range" min="200" max="6000" step="100" value="3500" class="bio-slider" />
+                <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-2">
+                  <span>200m</span>
+                  <span>3.000m</span>
+                  <span>6.000m</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controle 3: Temperatura / Taxa de Luciferase -->
+            <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-5 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <label for="sliderTemp" class="text-xs uppercase tracking-wider text-slate-300 font-semibold">
+                    Temperatura &amp; Luciferase
+                  </label>
+                  <span id="valTemp" class="font-mono text-sm font-bold text-purple-300">2.4 °C · Alta</span>
+                </div>
+                <p class="text-xs text-slate-400 mb-4">
+                  Define a intensidade fotônica e a persistência do rastro luminoso.
+                </p>
+              </div>
+              <div>
+                <input id="sliderTemp" type="range" min="1" max="15" step="0.5" value="2.5" class="bio-slider" />
+                <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-2">
+                  <span>1.0 °C (Hadal)</span>
+                  <span>8.0 °C</span>
+                  <span>15.0 °C</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Painel de Pré-visualização Cromática + Ações -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-4 border-t border-white/10">
+            <div class="flex items-center gap-3.5">
+              <div id="colorPreviewOrb" class="w-11 h-11 rounded-full border-2 border-white/60 transition-all duration-300 shrink-0" style="background-color: #00f5d4; box-shadow: 0 0 24px #00f5d4;"></div>
+              <div>
+                <div class="text-xs uppercase tracking-wider text-slate-400">Reação Sintetizada</div>
+                <div id="reactionSummary" class="text-sm font-semibold text-white">Ciano Bioluminescente · 480 nm</div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <button id="btnSynthesizeWave" type="button" class="bio-btn px-6 py-4 rounded-full bg-gradient-to-r from-bio-cyan/25 to-bio-blue/25 border border-bio-cyan/70 text-white font-semibold text-sm tracking-wide flex items-center justify-center gap-2.5 cursor-pointer">
+                <svg class="w-4 h-4 text-bio-cyan" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span>Sintetizar Onda Bioluminescente</span>
+              </button>
+
+              <button id="btnSonarPulse" type="button" class="bio-btn px-6 py-4 rounded-full abyss-glass border border-bio-violet/70 hover:border-bio-cyan text-cyan-100 font-semibold text-sm tracking-wide flex items-center justify-center gap-2.5 cursor-pointer">
+                <svg class="w-4 h-4 text-purple-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                </svg>
+                <span>Disparar Pulso de Sonar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Rodapé Poético -->
+    <footer class="relative z-10 text-center px-6 py-12 border-t border-white/10 text-xs sm:text-sm text-slate-400">
+      <p class="font-serif italic text-lg text-cyan-100/80 mb-2">
+        “Conhecemos melhor a superfície de Marte do que o leito dos nossos próprios oceanos.”
+      </p>
+      <p>O Abismo Luminoso · Experiência Interativa de Divulgação Oceânica</p>
+    </footer>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- MOTOR DE SIMULAÇÃO CANVAS 60FPS, ÁUDIO PROCEDURAL & INTERATIVIDADE     -->
+  <!-- ===================================================================== -->
+  <script>
+    (() => {
+      // ---------------------------------------------------------------------
+      // 1. UTILITÁRIOS DE NOTIFICAÇÃO E CONVERSÃO ESPECTRAL (nm -> RGB/HSL)
+      // ---------------------------------------------------------------------
+      const toastEl = document.getElementById('telemetryToast');
+      const toastTextEl = document.getElementById('toastText');
+      const toastDotEl = document.getElementById('toastDot');
+      let toastTimeout = null;
+
+      function showTelemetry(message, color = '#00f5d4') {
+        toastTextEl.textContent = message;
+        toastDotEl.style.backgroundColor = color;
+        toastEl.classList.remove('opacity-0', '-translate-y-3');
+        toastEl.classList.add('opacity-100', 'translate-y-0');
+
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toastEl.classList.remove('opacity-100', 'translate-y-0');
+          toastEl.classList.add('opacity-0', '-translate-y-3');
+        }, 3200);
+      }
+
+      // Converte comprimento de onda visível (420nm - 590nm) em cor vibrante
+      function wavelengthToColor(nm) {
+        let r = 0, g = 0, b = 0;
+        if (nm >= 420 && nm < 440) {
+          r = -(nm - 440) / (440 - 420);
+          g = 0.1;
+          b = 1.0;
+        } else if (nm >= 440 && nm < 490) {
+          r = 0.0;
+          g = (nm - 440) / (490 - 440);
+          b = 1.0;
+        } else if (nm >= 490 && nm < 510) {
+          r = 0.0;
+          g = 1.0;
+          b = -(nm - 510) / (510 - 490);
+        } else if (nm >= 510 && nm < 580) {
+          r = (nm - 510) / (580 - 510);
+          g = 1.0;
+          b = 0.0;
+        } else {
+          r = 1.0;
+          g = -(nm - 645) / (645 - 580);
+          b = 0.0;
+        }
+        const R = Math.round(Math.min(255, Math.max(0, r * 255)));
+        const G = Math.round(Math.min(255, Math.max(0, g * 255)));
+        const B = Math.round(Math.min(255, Math.max(0, b * 255)));
+        return {
+          rgb: `${R}, ${G}, ${B}`,
+          hex: `rgb(${R}, ${G}, ${B})`
+        };
+      }
+
+      // ---------------------------------------------------------------------
+      // 2. SISTEMA DE ÁUDIO PROCEDURAL (WEB AUDIO API - SEM ARQUIVOS EXTERNOS)
+      // ---------------------------------------------------------------------
+      const audioEngine = {
+        ctx: null,
+        isPlaying: false,
+        masterGain: null,
+        sonarInterval: null,
+
+        init() {
+          if (this.ctx) return;
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioCtx();
+
+          this.masterGain = this.ctx.createGain();
+          this.masterGain.gain.setValueAtTime(0.001, this.ctx.currentTime);
+          this.masterGain.connect(this.ctx.destination);
+
+          // 1) Ruído Marrom Profundo Filtrado (Correnteza Submarina)
+          const bufferSize = 2 * this.ctx.sampleRate;
+          const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+          const output = noiseBuffer.getChannelData(0);
+          let lastOut = 0.0;
+          for (let i = 0; i < bufferSize; i++) {
+            const white = Math.random() * 2 - 1;
+            output[i] = (lastOut + 0.02 * white) / 1.02;
+            lastOut = output[i];
+            output[i] *= 2.8;
+          }
+
+          const whiteNoise = this.ctx.createBufferSource();
+          whiteNoise.buffer = noiseBuffer;
+          whiteNoise.loop = true;
+
+          const lowpass = this.ctx.createBiquadFilter();
+          lowpass.type = 'lowpass';
+          lowpass.frequency.setValueAtTime(115, this.ctx.currentTime);
+
+          // LFO lento para simular ondas oceânicas profundas
+          const lfo = this.ctx.createOscillator();
+          lfo.frequency.setValueAtTime(0.08, this.ctx.currentTime);
+          const lfoGain = this.ctx.createGain();
+          lfoGain.gain.setValueAtTime(45, this.ctx.currentTime);
+          lfo.connect(lfoGain);
+          lfoGain.connect(lowpass.frequency);
+
+          const oceanGain = this.ctx.createGain();
+          oceanGain.gain.setValueAtTime(0.32, this.ctx.currentTime);
+
+          whiteNoise.connect(lowpass);
+          lowpass.connect(oceanGain);
+          oceanGain.connect(this.masterGain);
+
+          whiteNoise.start();
+          lfo.start();
+
+          // 2) Drone Harmônico Etéreo Abissal
+          const droneOsc1 = this.ctx.createOscillator();
+          droneOsc1.type = 'sine';
+          droneOsc1.frequency.setValueAtTime(55, this.ctx.currentTime); // Lá grave (A1)
+
+          const droneOsc2 = this.ctx.createOscillator();
+          droneOsc2.type = 'triangle';
+          droneOsc2.frequency.setValueAtTime(82.41, this.ctx.currentTime); // Mi (E2)
+
+          const droneFilter = this.ctx.createBiquadFilter();
+          droneFilter.type = 'lowpass';
+          droneFilter.frequency.setValueAtTime(180, this.ctx.currentTime);
+
+          const droneGain = this.ctx.createGain();
+          droneGain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+
+          droneOsc1.connect(droneFilter);
+          droneOsc2.connect(droneFilter);
+          droneFilter.connect(droneGain);
+          droneGain.connect(this.masterGain);
+
+          droneOsc1.start();
+          droneOsc2.start();
+        },
+
+        playSonarPing(freq = 980, volume = 0.14) {
+          if (!this.ctx || !this.isPlaying) return;
+          const now = this.ctx.currentTime;
+
+          // Pulso principal + eco distante
+          [0, 0.55].forEach((delay, idx) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now + delay);
+            osc.frequency.exponentialRampToValueAtTime(freq * 0.96, now + delay + 1.4);
+
+            const peak = idx === 0 ? volume : volume * 0.35;
+            gain.gain.setValueAtTime(0.0001, now + delay);
+            gain.gain.exponentialRampToValueAtTime(peak, now + delay + 0.03);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + delay + 1.8);
+
+            osc.connect(gain);
+            gain.connect(this.masterGain);
+
+            osc.start(now + delay);
+            osc.stop(now + delay + 1.9);
+          });
+        },
+
+        toggle() {
+          this.init();
+          if (this.ctx.state === 'suspended') {
+            this.ctx.resume();
+          }
+          const now = this.ctx.currentTime;
+          if (!this.isPlaying) {
+            this.isPlaying = true;
+            this.masterGain.gain.cancelScheduledValues(now);
+            this.masterGain.gain.setTargetAtTime(0.85, now, 0.8);
+            setTimeout(() => this.playSonarPing(880, 0.12), 400);
+            this.sonarInterval = setInterval(() => {
+              if (this.isPlaying) this.playSonarPing(840 + Math.random() * 140, 0.09);
+            }, 7500);
+          } else {
+            this.isPlaying = false;
+            this.masterGain.gain.cancelScheduledValues(now);
+            this.masterGain.gain.setTargetAtTime(0.0001, now, 0.4);
+            clearInterval(this.sonarInterval);
+          }
+          return this.isPlaying;
+        }
+      };
+
+      const audioToggleBtn = document.getElementById('audioToggleBtn');
+      const audioBtnLabel = document.getElementById('audioBtnLabel');
+      const audioDot = document.getElementById('audioDot');
+      const audioPing = document.getElementById('audioPing');
+
+      audioToggleBtn.addEventListener('click', () => {
+        const active = audioEngine.toggle();
+        if (active) {
+          audioBtnLabel.textContent = 'Hidrofone Ativo (Silenciar)';
+          audioDot.classList.remove('bg-slate-400');
+          audioDot.classList.add('bg-bio-cyan');
+          audioPing.classList.remove('hidden');
+          audioToggleBtn.classList.add('border-bio-cyan/70');
+          showTelemetry('Hidrofone abissal ativado — escutando as profundezas', '#00f5d4');
+        } else {
+          audioBtnLabel.textContent = 'Áudio Ambiente (Sonar & Profundezas)';
+          audioDot.classList.remove('bg-bio-cyan');
+          audioDot.classList.add('bg-slate-400');
+          audioPing.classList.add('hidden');
+          audioToggleBtn.classList.remove('border-bio-cyan/70');
+          showTelemetry('Hidrofone silenciado', '#94a3b8');
+        }
+      });
+
+      // ---------------------------------------------------------------------
+      // 3. MEDIDOR DE PROFUNDIDADE (BATÍMETRO) & GRADIENTE DINÂMICO DE FUNDO
+      // ---------------------------------------------------------------------
+      const depthValueDesktop = document.getElementById('depthValueDesktop');
+      const zoneNameDesktop = document.getElementById('zoneNameDesktop');
+      const depthBarDesktop = document.getElementById('depthBarDesktop');
+      const pressureDesktop = document.getElementById('pressureDesktop');
+      const tempDesktop = document.getElementById('tempDesktop');
+      const depthValueMobile = document.getElementById('depthValueMobile');
+      const zoneNameMobile = document.getElementById('zoneNameMobile');
+
+      let currentDepth = 200;
+
+      function getZoneInfo(depth) {
+        if (depth < 1000) {
+          return {
+            name: 'Zona Crepuscular',
+            short: 'Crepuscular',
+            rgb: [3, 27, 49] // Azul crepuscular profundo
+          };
+        } else if (depth < 2500) {
+          return {
+            name: 'Zona Batipelágica',
+            short: 'Batipelágica',
+            rgb: [2, 13, 30] // Azul meia-noite
+          };
+        } else if (depth < 5000) {
+          return {
+            name: 'Zona Abissal',
+            short: 'Abissal',
+            rgb: [2, 6, 16] // Abismo escuro
+          };
+        } else {
+          return {
+            name: 'Zona Hadal',
+            short: 'Hadal',
+            rgb: [1, 2, 6] // Escuridão total
+          };
+        }
+      }
+
+      function interpolateBgColor(progress) {
+        // Pontos de cor ao longo do mergulho (0.0 -> 1.0)
+        const stops = [
+          { p: 0.0, c: [3, 28, 52] },   // 200m
+          { p: 0.25, c: [2, 15, 34] },  // 1.200m
+          { p: 0.6, c: [2, 7, 18] },    // 3.500m
+          { p: 1.0, c: [1, 2, 6] }      // 6.000m
+        ];
+        for (let i = 0; i < stops.length - 1; i++) {
+          const s1 = stops[i];
+          const s2 = stops[i + 1];
+          if (progress >= s1.p && progress <= s2.p) {
+            const t = (progress - s1.p) / (s2.p - s1.p);
+            const r = Math.round(s1.c[0] + (s2.c[0] - s1.c[0]) * t);
+            const g = Math.round(s1.c[1] + (s2.c[1] - s1.c[1]) * t);
+            const b = Math.round(s1.c[2] + (s2.c[2] - s1.c[2]) * t);
+            return `rgb(${r}, ${g}, ${b})`;
+          }
+        }
+        return 'rgb(1, 2, 6)';
+      }
+
+      function updateDepthOnScroll() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const progress = Math.min(1, Math.max(0, scrollTop / maxScroll));
+
+        // Mapeia de 200m até 6.000m
+        currentDepth = Math.round(200 + progress * 5800);
+        const formattedDepth = currentDepth.toLocaleString('pt-BR');
+        const zone = getZoneInfo(currentDepth);
+
+        // Atualiza UI Desktop & Mobile
+        depthValueDesktop.textContent = formattedDepth;
+        zoneNameDesktop.textContent = zone.name;
+        depthBarDesktop.style.height = `${Math.max(4, progress * 100)}%`;
+
+        depthValueMobile.textContent = `${formattedDepth}m`;
+        zoneNameMobile.textContent = zone.short;
+
+        // Telemetria física realista (1 ATM a cada 10m + 1 ATM superfície)
+        const atm = Math.round(1 + currentDepth / 10);
+        const temp = Math.max(1.1, 11.4 - progress * 10.2).toFixed(1);
+        pressureDesktop.textContent = `${atm} ATM`;
+        tempDesktop.textContent = `${temp} °C`;
+
+        // Escurece o fundo progressivamente
+        document.body.style.backgroundColor = interpolateBgColor(progress);
+      }
+
+      window.addEventListener('scroll', updateDepthOnScroll, { passive: true });
+      updateDepthOnScroll();
+
+      window.scrollToDepth = function(sectionId) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+
+      // ---------------------------------------------------------------------
+      // 4. SIMULAÇÃO BIOLUMINESCENTE EM HTML5 CANVAS (60 FPS)
+      // ---------------------------------------------------------------------
+      const canvas = document.getElementById('abyssCanvas');
+      const ctx = canvas.getContext('2d');
+
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      // Paleta de Dinoflagelados Reais
+      const BIO_PALETTE = [
+        { hex: '#00f5d4', rgb: '0, 245, 212' },  // Ciano Elétrico
+        { hex: '#00bbf9', rgb: '0, 187, 249' },  // Azul Abissal
+        { hex: '#9b5de5', rgb: '155, 93, 229' }  // Violeta Místico
+      ];
+
+      // Estado Global do Ponteiro e Efeitos Especiais
+      const pointer = {
+        x: width * 0.5,
+        y: height * 0.4,
+        px: width * 0.5,
+        py: height * 0.4,
+        vx: 0,
+        vy: 0,
+        active: false,
+        anglerLureMode: false
+      };
+
+      let planktonParticles = [];
+      let marineSnow = [];
+      let burstParticles = [];
+      let sonarWaves = [];
+      let atollaAlarms = [];
+      let customLightWaves = [];
+      let sonarGlobalIllumination = 0;
+
+      // Inicializa Neve Marinha e Plâncton Dinoflagelado
+      function initEcosystem() {
+        const areaFactor = Math.min(1.4, Math.max(0.65, (width * height) / (1280 * 800)));
+        const planktonCount = Math.floor(140 * areaFactor);
+        const snowCount = Math.floor(85 * areaFactor);
+
+        planktonParticles = [];
+        for (let i = 0; i < planktonCount; i++) {
+          const palette = BIO_PALETTE[i % BIO_PALETTE.length];
+          planktonParticles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: (Math.random() - 0.5) * 0.35,
+            baseRadius: 1.2 + Math.random() * 1.8,
+            energy: Math.random() * 0.25, // Brilho adormecido -> acende ao ser perturbado
+            phase: Math.random() * Math.PI * 2,
+            colorRgb: palette.rgb
+          });
+        }
+
+        marineSnow = [];
+        for (let i = 0; i < snowCount; i++) {
+          marineSnow.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            r: 0.7 + Math.random() * 1.6,
+            speedY: 0.15 + Math.random() * 0.38,
+            drift: Math.random() * Math.PI * 2,
+            alpha: 0.12 + Math.random() * 0.22
+          });
+        }
+      }
+      initEcosystem();
+
+      // Rastreamento unificado de Mouse e Toque em toda a janela
+      function handlePointerMove(clientX, clientY) {
+        pointer.px = pointer.x;
+        pointer.py = pointer.y;
+        pointer.x = clientX;
+        pointer.y = clientY;
+        pointer.vx = pointer.x - pointer.px;
+        pointer.vy = pointer.y - pointer.py;
+        pointer.active = true;
+
+        const speed = Math.hypot(pointer.vx, pointer.vy);
+        if (speed > 2) {
+          // Gera rastro sutil de micro-dinoflagelados excitados pelo movimento
+          const count = Math.min(3, Math.floor(speed / 12) + 1);
+          for (let i = 0; i < count; i++) {
+            const pColor = BIO_PALETTE[Math.floor(Math.random() * BIO_PALETTE.length)];
+            burstParticles.push({
+              x: pointer.x + (Math.random() - 0.5) * 14,
+              y: pointer.y + (Math.random() - 0.5) * 14,
+              vx: pointer.vx * 0.12 + (Math.random() - 0.5) * 0.8,
+              vy: pointer.vy * 0.12 + (Math.random() - 0.5) * 0.8,
+              radius: 1.5 + Math.random() * 2.2,
+              life: 1.0,
+              decay: 0.018 + Math.random() * 0.015,
+              colorRgb: pColor.rgb
+            });
+          }
+        }
+      }
+
+      window.addEventListener('pointermove', (e) => {
+        handlePointerMove(e.clientX, e.clientY);
+      }, { passive: true });
+
+      window.addEventListener('pointerdown', (e) => {
+        handlePointerMove(e.clientX, e.clientY);
+        // Ao clicar/tocar na água, cria um pequeno turbilhão bioluminescente
+        spawnPlanktonBurst(e.clientX, e.clientY, 18, '0, 245, 212', 2.6);
+        audioEngine.playSonarPing(1120, 0.045);
+      }, { passive: true });
+
+      // Funções Geradoras de Fenômenos Bioluminescentes no Canvas
+      function spawnPlanktonBurst(x, y, count = 40, customRgb = null, speedMult = 3.2) {
+        for (let i = 0; i < count; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = (0.4 + Math.random() * 1.4) * speedMult;
+          const rgb = customRgb || BIO_PALETTE[i % BIO_PALETTE.length].rgb;
+          burstParticles.push({
+            x,
+            y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            radius: 1.6 + Math.random() * 2.8,
+            life: 1.0,
+            decay: 0.008 + Math.random() * 0.01,
+            colorRgb: rgb
+          });
+        }
+      }
+
+      function triggerAtollaAlarmCanvas() {
+        const rect = document.getElementById('atollaSvg').getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        atollaAlarms.push({
+          x: cx,
+          y: cy,
+          radius: 30,
+          maxRadius: Math.max(width, height) * 0.65,
+          angle: 0,
+          life: 1.0
+        });
+        spawnPlanktonBurst(cx, cy, 45, '0, 245, 212', 3.5);
+        audioEngine.playSonarPing(1240, 0.12);
+      }
+
+      function triggerVampireMucusCanvas() {
+        const rect = document.getElementById('vampireSvg').getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height * 0.72;
+        // Libera uma nuvem densa e flutuante de esferas azul-violeta
+        for (let i = 0; i < 110; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 0.3 + Math.random() * 2.8;
+          const rgb = i % 2 === 0 ? '0, 245, 212' : '155, 93, 229';
+          burstParticles.push({
+            x: cx + (Math.random() - 0.5) * 40,
+            y: cy + (Math.random() - 0.5) * 30,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 0.3,
+            radius: 2 + Math.random() * 3.5,
+            life: 1.35,
+            decay: 0.0055 + Math.random() * 0.005,
+            colorRgb: rgb
+          });
+        }
+        audioEngine.playSonarPing(660, 0.11);
+      }
+
+      function triggerSonarPulseCanvas() {
+        sonarWaves.push({
+          x: width * 0.5,
+          y: height * 0.5,
+          radius: 10,
+          maxRadius: Math.hypot(width, height) * 0.85,
+          life: 1.0
+        });
+        sonarGlobalIllumination = 1.0;
+        // Excita todo o plâncton visível
+        planktonParticles.forEach(p => {
+          p.energy = 1.0;
+        });
+        audioEngine.playSonarPing(780, 0.18);
+      }
+
+      function triggerCustomBioluminescentWave(rgbString, intensity = 1.0, turbulence = 1.0) {
+        customLightWaves.push({
+          y: height + 40,
+          speed: 3.5 + turbulence * 1.5,
+          amplitude: 35 + turbulence * 25,
+          frequency: 0.006 + turbulence * 0.003,
+          phase: Math.random() * Math.PI * 2,
+          rgb: rgbString,
+          life: 1.0,
+          intensity
+        });
+
+        // Emite enxame personalizado ao longo da base da tela
+        const count = Math.floor(65 * intensity);
+        for (let i = 0; i < count; i++) {
+          burstParticles.push({
+            x: Math.random() * width,
+            y: height - Math.random() * 60,
+            vx: (Math.random() - 0.5) * 2.2 * turbulence,
+            vy: -(1.8 + Math.random() * 3.4),
+            radius: 2.0 + Math.random() * 3.2 * intensity,
+            life: 1.25,
+            decay: 0.0065 / Math.max(0.6, intensity),
+            colorRgb: rgbString
+          });
+        }
+        audioEngine.playSonarPing(920, 0.12);
+      }
+
+      // Loop Principal de Animação 60fps
+      function renderLoop(timestamp) {
+        ctx.clearRect(0, 0, width, height);
+
+        // Decaimento suave da iluminação global de sonar
+        if (sonarGlobalIllumination > 0) {
+          sonarGlobalIllumination = Math.max(0, sonarGlobalIllumination - 0.012);
+        }
+
+        // 1) Desenha Neve Marinha (Detritos orgânicos caindo lentamente)
+        for (let i = 0; i < marineSnow.length; i++) {
+          const s = marineSnow[i];
+          s.drift += 0.012;
+          s.y += s.speedY;
+          s.x += Math.sin(s.drift) * 0.25;
+
+          if (s.y > height + 5) {
+            s.y = -5;
+            s.x = Math.random() * width;
+          }
+
+          const distToCursor = Math.hypot(s.x - pointer.x, s.y - pointer.y);
+          const nearGlow = distToCursor < 140 ? (1 - distToCursor / 140) * 0.45 : 0;
+          const alpha = Math.min(0.85, s.alpha + nearGlow + sonarGlobalIllumination * 0.35);
+
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(195, 232, 255, ${alpha})`;
+          ctx.fill();
+        }
+
+        // 2) Desenha e Atualiza Plâncton Dinoflagelado Reativo
+        const interactionRadius = pointer.anglerLureMode ? 240 : 135;
+
+        for (let i = 0; i < planktonParticles.length; i++) {
+          const p = planktonParticles[i];
+          p.phase += 0.03;
+
+          const dx = pointer.x - p.x;
+          const dy = pointer.y - p.y;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < interactionRadius && dist > 0.1) {
+            const force = 1 - dist / interactionRadius;
+            // Excita a reação luciferina-luciferase
+            p.energy = Math.min(1.0, p.energy + force * 0.14);
+
+            if (pointer.anglerLureMode) {
+              // Modo Isca do Tamboril: atração orbital suave em direção ao cursor
+              p.vx += (dx / dist) * force * 0.14 - (dy / dist) * force * 0.06;
+              p.vy += (dy / dist) * force * 0.14 + (dx / dist) * force * 0.06;
+            } else {
+              // Perturbação hidrodinâmica padrão ao mover o cursor
+              p.vx += pointer.vx * force * 0.012 + (Math.random() - 0.5) * 0.08;
+              p.vy += pointer.vy * force * 0.012 + (Math.random() - 0.5) * 0.08;
+            }
+          }
+
+          // Amortecimento e deriva natural
+          p.vx *= 0.96;
+          p.vy *= 0.96;
+          p.x += p.vx + Math.cos(p.phase) * 0.18;
+          p.y += p.vy + Math.sin(p.phase) * 0.18;
+
+          // Wrap-around nas bordas da tela
+          if (p.x < -10) p.x = width + 10;
+          if (p.x > width + 10) p.x = -10;
+          if (p.y < -10) p.y = height + 10;
+          if (p.y > height + 10) p.y = -10;
+
+          // Decaimento gradual da energia bioluminescente
+          p.energy = Math.max(0.08, p.energy * 0.975);
+
+          const glowRadius = p.baseRadius * (2.5 + p.energy * 6.5);
+          const alpha = 0.16 + p.energy * 0.84;
+
+          // Halo Luminoso
+          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowRadius);
+          grad.addColorStop(0, `rgba(255, 255, 255, ${alpha})`);
+          grad.addColorStop(0.35, `rgba(${p.colorRgb}, ${alpha * 0.85})`);
+          grad.addColorStop(1, `rgba(${p.colorRgb}, 0)`);
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, glowRadius, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+        }
+
+        // 3) Se Modo Isca Magnética do Tamboril estiver ativo, desenha a Esca no Cursor
+        if (pointer.anglerLureMode) {
+          const lurePulse = 22 + Math.sin(timestamp * 0.008) * 6;
+          const lureGrad = ctx.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, lurePulse * 2.2);
+          lureGrad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+          lureGrad.addColorStop(0.3, 'rgba(0, 245, 212, 0.65)');
+          lureGrad.addColorStop(1, 'rgba(0, 187, 249, 0)');
+
+          ctx.beginPath();
+          ctx.arc(pointer.x, pointer.y, lurePulse * 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = lureGrad;
+          ctx.fill();
+        }
+
+        // 4) Partículas Efêmeras (Rastros, Nuvem de Muco, Síntese do Laboratório)
+        for (let i = burstParticles.length - 1; i >= 0; i--) {
+          const bp = burstParticles[i];
+          bp.x += bp.vx;
+          bp.y += bp.vy;
+          bp.vx *= 0.985;
+          bp.vy *= 0.985;
+          bp.life -= bp.decay;
+
+          if (bp.life <= 0) {
+            burstParticles.splice(i, 1);
+            continue;
+          }
+
+          const alpha = Math.min(1, bp.life);
+          const r = bp.radius * (1.8 + alpha * 2.5);
+          const grad = ctx.createRadialGradient(bp.x, bp.y, 0, bp.x, bp.y, r);
+          grad.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.9})`);
+          grad.addColorStop(0.4, `rgba(${bp.colorRgb}, ${alpha * 0.75})`);
+          grad.addColorStop(1, `rgba(${bp.colorRgb}, 0)`);
+
+          ctx.beginPath();
+          ctx.arc(bp.x, bp.y, r, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+        }
+
+        // 5) Animação Radial Hipnótica do Alarme da Água-viva Atolla
+        for (let i = atollaAlarms.length - 1; i >= 0; i--) {
+          const alarm = atollaAlarms[i];
+          alarm.radius += 5.5;
+          alarm.angle += 0.08;
+          alarm.life = 1 - alarm.radius / alarm.maxRadius;
+
+          if (alarm.life <= 0) {
+            atollaAlarms.splice(i, 1);
+            continue;
+          }
+
+          ctx.save();
+          ctx.translate(alarm.x, alarm.y);
+          ctx.rotate(alarm.angle);
+          ctx.strokeStyle = `rgba(0, 245, 212, ${alarm.life * 0.7})`;
+          ctx.lineWidth = 3;
+          ctx.setLineDash([24, 28]);
+          ctx.beginPath();
+          ctx.arc(0, 0, alarm.radius, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.rotate(-alarm.angle * 1.8);
+          ctx.strokeStyle = `rgba(155, 93, 229, ${alarm.life * 0.5})`;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(0, 0, alarm.radius * 0.75, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        // 6) Ondas de Sonar Expansivas
+        for (let i = sonarWaves.length - 1; i >= 0; i--) {
+          const sw = sonarWaves[i];
+          sw.radius += 11;
+          sw.life = 1 - sw.radius / sw.maxRadius;
+
+          if (sw.life <= 0) {
+            sonarWaves.splice(i, 1);
+            continue;
+          }
+
+          ctx.beginPath();
+          ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(0, 245, 212, ${sw.life * 0.55})`;
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(sw.x, sw.y, sw.radius * 0.88, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(0, 187, 249, ${sw.life * 0.25})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        // 7) Ondas Personalizadas do Laboratório de Bioluminescência
+        for (let i = customLightWaves.length - 1; i >= 0; i--) {
+          const cw = customLightWaves[i];
+          cw.y -= cw.speed;
+          cw.phase += 0.04;
+          cw.life = Math.max(0, (cw.y + 80) / (height + 120));
+
+          if (cw.y < -100) {
+            customLightWaves.splice(i, 1);
+            continue;
+          }
+
+          ctx.save();
+          ctx.beginPath();
+          for (let x = 0; x <= width; x += 16) {
+            const waveY = cw.y + Math.sin(x * cw.frequency + cw.phase) * cw.amplitude;
+            if (x === 0) ctx.moveTo(x, waveY);
+            else ctx.lineTo(x, waveY);
+          }
+          ctx.strokeStyle = `rgba(${cw.rgb}, ${cw.life * 0.75})`;
+          ctx.lineWidth = 4 * cw.intensity;
+          ctx.shadowColor = `rgb(${cw.rgb})`;
+          ctx.shadowBlur = 22;
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        requestAnimationFrame(renderLoop);
+      }
+
+      window.addEventListener('load', () => {
+        requestAnimationFrame(renderLoop);
+      });
+
+      // ---------------------------------------------------------------------
+      // 5. INTERAÇÕES DAS 4 CRIATURAS ABISSAIS
+      // ---------------------------------------------------------------------
+      // Criatura 1: Água-viva Atolla — Pulso de Alarme
+      const btnAtollaAlarm = document.getElementById('btnAtollaAlarm');
+      const atollaVisualWrapper = document.getElementById('atollaVisualWrapper');
+
+      btnAtollaAlarm.addEventListener('click', () => {
+        atollaVisualWrapper.classList.add('atolla-alarm-active');
+        triggerAtollaAlarmCanvas();
+        showTelemetry('Alarme bioluminescente da Atolla wyvillei ativado!', '#00f5d4');
+
+        setTimeout(() => {
+          atollaVisualWrapper.classList.remove('atolla-alarm-active');
+        }, 4200);
+      });
+
+      // Criatura 2: Lula-vampiro-do-inferno — Nuvem de Muco Luminoso
+      const btnVampireCloud = document.getElementById('btnVampireCloud');
+      btnVampireCloud.addEventListener('click', () => {
+        triggerVampireMucusCanvas();
+        showTelemetry('Nuvem de muco bioluminescente liberada nas trevas!', '#9b5de5');
+      });
+
+      // Criatura 3: Peixe-diabo-negro — Isca (Esca) Interativa no Cursor
+      const btnAnglerLure = document.getElementById('btnAnglerLure');
+      const anglerBtnText = document.getElementById('anglerBtnText');
+      const anglerDot = document.getElementById('anglerDot');
+      const anglerVisualWrapper = document.getElementById('anglerVisualWrapper');
+
+      btnAnglerLure.addEventListener('click', () => {
+        pointer.anglerLureMode = !pointer.anglerLureMode;
+        if (pointer.anglerLureMode) {
+          anglerBtnText.textContent = 'Desativar Isca Magnética';
+          anglerDot.classList.add('animate-ping');
+          anglerVisualWrapper.classList.add('esca-supercharged');
+          showTelemetry('Isca simbiótica ativa: mova o cursor para atrair o plâncton!', '#00bbf9');
+        } else {
+          anglerBtnText.textContent = 'Ativar Isca Magnética no Cursor';
+          anglerDot.classList.remove('animate-ping');
+          anglerVisualWrapper.classList.remove('esca-supercharged');
+          showTelemetry('Isca bioluminescente recolhida', '#94a3b8');
+        }
+      });
+
+      // Criatura 4: Sifonóforo Gigante — Cascata de Luz Colonial
+      const siphonNodes = document.querySelectorAll('.siphon-node');
+      const siphonBox = document.getElementById('siphonInteractiveBox');
+      const btnSiphonWave = document.getElementById('btnSiphonWave');
+
+      function exciteSiphonColony() {
+        siphonNodes.forEach((node, index) => {
+          setTimeout(() => {
+            node.setAttribute('r', '10');
+            node.setAttribute('fill', '#ffffff');
+            setTimeout(() => {
+              node.setAttribute('r', '5.8');
+              node.setAttribute('fill', index % 2 === 0 ? '#00f5d4' : '#00bbf9');
+            }, 320);
+          }, index * 65);
+        });
+      }
+
+      siphonBox.addEventListener('pointerenter', exciteSiphonColony);
+      siphonBox.addEventListener('click', () => {
+        exciteSiphonColony();
+        const rect = siphonBox.getBoundingClientRect();
+        spawnPlanktonBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 35, '0, 245, 212', 2.2);
+      });
+
+      btnSiphonWave.addEventListener('click', () => {
+        exciteSiphonColony();
+        const rect = siphonBox.getBoundingClientRect();
+        spawnPlanktonBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 50, '0, 245, 212', 2.6);
+        showTelemetry('Onda colonial propagada pelos zooides de Praya dubia', '#00f5d4');
+      });
+
+      // ---------------------------------------------------------------------
+      // 6. LABORATÓRIO DE BIOLUMINESCÊNCIA INTERATIVO
+      // ---------------------------------------------------------------------
+      const sliderWavelength = document.getElementById('sliderWavelength');
+      const sliderLabDepth = document.getElementById('sliderLabDepth');
+      const sliderTemp = document.getElementById('sliderTemp');
+
+      const valWavelength = document.getElementById('valWavelength');
+      const descWavelength = document.getElementById('descWavelength');
+      const valLabDepth = document.getElementById('valLabDepth');
+      const valTemp = document.getElementById('valTemp');
+
+      const photonOutputLabel = document.getElementById('photonOutputLabel');
+      const colorPreviewOrb = document.getElementById('colorPreviewOrb');
+      const reactionSummary = document.getElementById('reactionSummary');
+
+      const btnSynthesizeWave = document.getElementById('btnSynthesizeWave');
+      const btnSonarPulse = document.getElementById('btnSonarPulse');
+
+      function getSpectralDescription(nm) {
+        if (nm < 455) return { title: 'Violeta Profundo', desc: 'Alta energia fotônica, comum em sifonóforos e águas-vivas.' };
+        if (nm < 495) return { title: 'Ciano Abissal', desc: 'Comprimento ideal: viaja mais longe através da água do mar.' };
+        if (nm < 535) return { title: 'Verde Esmeralda', desc: 'Frequente em organismos bentônicos e costas profundas.' };
+        return { title: 'Âmbar / Infravermelho Raro', desc: '“Lanterna secreta” usada pelo peixe-dragão Malacosteus para caçar sem ser visto.' };
+      }
+
+      function updateLabUI() {
+        const nm = parseInt(sliderWavelength.value, 10);
+        const depth = parseInt(sliderLabDepth.value, 10);
+        const temp = parseFloat(sliderTemp.value);
+
+        const color = wavelengthToColor(nm);
+        const info = getSpectralDescription(nm);
+
+        valWavelength.textContent = `${nm} nm`;
+        valWavelength.style.color = color.hex;
+        descWavelength.textContent = `${info.title} — ${info.desc}`;
+
+        valLabDepth.textContent = `${depth.toLocaleString('pt-BR')} m`;
+
+        const rateLabel = temp <= 4 ? 'Cristalina' : temp <= 10 ? 'Moderada' : 'Acelerada';
+        valTemp.textContent = `${temp.toFixed(1)} °C · ${rateLabel}`;
+
+        photonOutputLabel.textContent = `Fóton (${nm} nm)`;
+        photonOutputLabel.style.color = color.hex;
+
+        colorPreviewOrb.style.backgroundColor = color.hex;
+        colorPreviewOrb.style.boxShadow = `0 0 26px ${color.hex}`;
+        reactionSummary.textContent = `${info.title} · ${nm} nm (${depth.toLocaleString('pt-BR')}m)`;
+
+        sliderWavelength.style.setProperty('--thumb-color', color.hex);
+      }
+
+      sliderWavelength.addEventListener('input', updateLabUI);
+      sliderLabDepth.addEventListener('input', updateLabUI);
+      sliderTemp.addEventListener('input', updateLabUI);
+      updateLabUI();
+
+      btnSynthesizeWave.addEventListener('click', () => {
+        const nm = parseInt(sliderWavelength.value, 10);
+        const depth = parseInt(sliderLabDepth.value, 10);
+        const temp = parseFloat(sliderTemp.value);
+
+        const color = wavelengthToColor(nm);
+        const intensity = 0.7 + (temp / 15) * 0.8;
+        const turbulence = 0.5 + (depth / 6000) * 1.2;
+
+        triggerCustomBioluminescentWave(color.rgb, intensity, turbulence);
+        showTelemetry(`Onda bioluminescente de ${nm} nm sintetizada no oceano!`, color.hex);
+      });
+
+      btnSonarPulse.addEventListener('click', () => {
+        triggerSonarPulseCanvas();
+        showTelemetry('Pulso de sonar emitido — coluna d’água iluminada!', '#00f5d4');
+      });
+    })();
+  </script>
+</body>
+</html>
